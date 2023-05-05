@@ -18,6 +18,19 @@ app.post("/", (req, res) => {
     res.send(`Calculation is: ${result}`)
 })
 
+app.get("/bmicalculator", (req, res) => {
+    res.sendFile(__dirname + "/bmiCalculator.html");
+})
+
+app.post("/bmicalculator", (req, res) => {
+    let weight = parseFloat(req.body.weight)
+
+    let height = parseFloat(req.body.Height)
+    let BMI = parseFloat(weight / (height * height));
+    console.log(BMI)
+    res.send("Your BMI is " + BMI)
+})
+
 app.listen(3000, () => {
     console.log("Server Started on 3000");
 })
